@@ -23,4 +23,15 @@
     </dependency>
   </dependencies>
 
+  <profiles>
+    <profile>
+      <id>testng suite</id>
+      <properties>
+        <testng.fale.path>src/test/resources/testng.xml</testng.fale.path>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
 </project>
