@@ -17,27 +17,31 @@ public class TestMathClass extends BaseClass {
         Assert.assertTrue(numActual == numExpected);
     }
 
-    @Parameters({"num"})
+    @Parameters(value = "num")
     @Test
-    public void checkCosAndCoshMethodReturnDifferentValues(@Optional("45") double num) {
+    public void checkCosAndCoshMethodReturnDifferentValues(@Optional("10") double num) {
         double numCos = Math.cos(num);
         double numCosh = Math.cosh(num);
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertNotEquals(numCos, numCosh);
-        softAssert.assertFalse(numCos == numCosh);
+
+        Assert.assertNotEquals(numCos, numCosh);
+        Assert.assertFalse(numCos == numCosh);
     }
 
-    @Parameters({"num"})
+    @Parameters(value = "num")
     @Test
-    public void checkCosAndCoshMethodsFail(@Optional("45") double num) {
+    public void checkCosAndCoshMethodsFail(@Optional("10") double num) {
         double numCos = Math.cos(num);
         double numCosh = Math.cosh(num);
 
-        Assert.fail();
         Assert.assertFalse(numCos != numCosh);
-
+        Assert.fail();
     }
 
+    @Test(dataProvider = "cbrt test", dataProviderClass = DataProvider.class)
+    public void checkCbrtMethod(Double num, Double expectedNum) {
+        double cbrt = Math.cbrt(num);
 
-
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(cbrt == expectedNum);
+    }
 }

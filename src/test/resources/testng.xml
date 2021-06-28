@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="math class test">
   <test name="math class test">
-    <parameter name="num" value="45.5"></parameter>
+    <parameter name="num" value="45"></parameter>
     <classes>
       <class name="TestMathClass"/>
     </classes>
