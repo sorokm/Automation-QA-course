@@ -11,11 +11,24 @@ public class DataProvider {
         };
     }
 
+    @org.testng.annotations.DataProvider(name = "abs test failed")
+    public Object[][] dataProviderAbsTestFailed() {
+        return new Object[][] {
+            {new Double(-17.1), new Double(-17.1)}
+        };
+    }
+
     @org.testng.annotations.DataProvider(name = "cbrt test")
     public Object[][] dataProviderCbrtTest() {
         return new Object[][] {
-            {new Double(-9), new Double(3)},
-            {new Double(9), new Double(-4)},
+            {new Double(125.0), new Double(5.0)}
+        };
+    }
+
+    @org.testng.annotations.DataProvider(name = "sqrt and cbrt test")
+    public Object[][] dataProviderSqrtAndCbrtTest() {
+        return new Object[][] {
+            {new Double(100), new Double(100)}
         };
     }
 }

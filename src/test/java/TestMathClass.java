@@ -6,14 +6,20 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-@Listeners(Listener.class)
+@Listeners(CustomListeners.class)
 public class TestMathClass extends BaseClass {
 
     @Test(dataProvider = "abs test", dataProviderClass = DataProvider.class)
     public void checkAbsMethod(double numToUse, double numExpected) {
         double numActual = Math.abs(numToUse);
 
-        Assert.assertEquals(numActual, numExpected);
+        Assert.assertTrue(numActual == numExpected);
+    }
+
+    @Test(dataProvider = "abs test failed", dataProviderClass = DataProvider.class)
+    public void checkAbsMethodFailed(double num, double numExpected) {
+        double numActual = Math.abs(num);
+
         Assert.assertTrue(numActual == numExpected);
     }
 
@@ -23,8 +29,12 @@ public class TestMathClass extends BaseClass {
         double numCos = Math.cos(num);
         double numCosh = Math.cosh(num);
 
-        Assert.assertNotEquals(numCos, numCosh);
         Assert.assertFalse(numCos == numCosh);
+    }
+
+    @Test(dataProvider = "sqrt and cbrt test", dataProviderClass = DataProvider.class)
+    public void checkSqrtAndCbrtMethodReturnDifferentResults(Double sqrt, Double cbrt) {
+        Assert.assertNotEquals(Math.sqrt(sqrt), Math.cbrt(cbrt));
     }
 
     @Parameters(value = "num")
@@ -33,7 +43,6 @@ public class TestMathClass extends BaseClass {
         double numCos = Math.cos(num);
         double numCosh = Math.cosh(num);
 
-        Assert.assertFalse(numCos != numCosh);
         Assert.fail();
     }
 
@@ -42,6 +51,8 @@ public class TestMathClass extends BaseClass {
         double cbrt = Math.cbrt(num);
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(cbrt == expectedNum);
+        softAssert.assertEquals(cbrt, expectedNum);
+        softAssert.assertAll();
     }
+
 }
