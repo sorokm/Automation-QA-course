@@ -1,13 +1,13 @@
 **Task:**
 
-* Implement scenario with:
+1. Implement test scenario with technologies:
   * java
   * cucumber
   * junit
   * selenium
     
 
-* Add search scenario and implement it by using technologies described above
+2. Add search scenario and implement it by using technologies described above
 
 
-* Add setting browser in config file (optional)
+3. Add setting browser in config file (optional)
