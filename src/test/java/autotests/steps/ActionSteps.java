@@ -6,27 +6,29 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import java.io.IOException;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 
 public class ActionSteps {
 
     TestContext testContext;
+    PropertiesFile propertiesFile = new PropertiesFile();
 
-    public ActionSteps(TestContext testContext){
+    public ActionSteps(TestContext testContext) {
         this.testContext = testContext;
     }
 
     @Before
     public void setUp() {
-        PropertiesFile propertiesFile = new PropertiesFile();
         WebDriver webDriver = propertiesFile.getBrowser();
         testContext.setWebDriver(webDriver);
         testContext.initializePageObject(testContext.getWebDriver());
     }
 
-    @Given("I navigate to {string}")
-    public void openSite(String url) {
+    @Given("I navigate to home page")
+    public void openSite() throws IOException {
+        String url = propertiesFile.getUrl();
         testContext.getHomePage().openSite(url);
     }
 
@@ -73,6 +75,5 @@ public class ActionSteps {
     public void clickOnSearchButton() {
         testContext.getHomePage().clickOnSearchButton();
     }
-
 }
 

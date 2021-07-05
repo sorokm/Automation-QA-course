@@ -2,6 +2,7 @@ package autotests.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -15,6 +16,8 @@ import org.openqa.selenium.opera.OperaDriver;
 public class PropertiesFile {
     WebDriver webDriver;
     String browserName;
+    String url;
+    String accountPageUrl;
     Properties prop = new Properties();
     private String filePath = "src/test/resources/config.properties";
 
@@ -46,4 +49,19 @@ public class PropertiesFile {
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return webDriver;
     }
+
+    public String getUrl() throws IOException {
+        InputStream input = new FileInputStream(filePath);
+        prop.load(input);
+        url = prop.getProperty("url");
+        return url;
+    }
+
+    public String getAccountPageUrl() throws IOException {
+        InputStream input = new FileInputStream(filePath);
+        prop.load(input);
+        accountPageUrl = prop.getProperty("urlaccountpage");
+        return accountPageUrl;
+    }
+
 }

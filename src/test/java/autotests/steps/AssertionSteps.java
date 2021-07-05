@@ -12,21 +12,20 @@ public class AssertionSteps {
         this.testContext = testContext;
     }
 
-    @Then("New account is successfully created")
-    public void checkAccountWasCreated() {
-        Assert.assertTrue(testContext.getMyAccountPage().checkMyAccountPageUrl());
+    @Then("Account is created: the message {string} is displayed in the page")
+    public void checkAccountWasCreated(String message) {
+        Assert.assertTrue(testContext.getMyAccountPage().messageTextIsDisplayed(message));
     }
 
     @Then("Correct items are displayed in search result page")
     public void checkCorrectItemsAreDisplayed() {
-
-        Assert.assertTrue(testContext.getSearchResultPage().checkSearchResultContainsUserRequest());
-        Assert.assertTrue(testContext.getSearchResultPage().checkProductCardContainsUserRequest());
+        Assert.assertTrue(testContext.getSearchResultPage().isSearchResultContainUserRequest());
+        Assert.assertTrue(testContext.getSearchResultPage().isProductCardContainUserRequest());
     }
 
     @Then("Warning message {string} is displayed in Search result page")
     public void checkWarningMessageIsDisplayed(String message) {
-        Assert.assertTrue(testContext.getSearchResultPage().checkWarningMessageIsDisplayed(message));
+        Assert.assertTrue(testContext.getSearchResultPage().isWarningMessageDisplayed(message));
     }
 
     @After

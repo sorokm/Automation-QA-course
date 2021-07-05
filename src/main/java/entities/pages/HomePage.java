@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     @FindBy(xpath = "//*[@class = 'login']")
     private WebElement signUpButton;
@@ -17,7 +17,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//button[@class = 'btn btn-default button-search']")
     private WebElement searchButton;
 
-    public HomePage(WebDriver webDriver){
+    public HomePage(WebDriver webDriver) {
         super(webDriver);
     }
 

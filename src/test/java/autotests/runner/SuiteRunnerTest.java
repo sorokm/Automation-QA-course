@@ -7,5 +7,5 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/resources/features"},
                  glue = {"autotests.steps"})
-public class Runner {
+public class SuiteRunnerTest {
 }

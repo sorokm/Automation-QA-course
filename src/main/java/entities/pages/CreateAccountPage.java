@@ -1,6 +1,8 @@
 package entities.pages;
 
+import java.text.MessageFormat;
 import java.util.Random;
+import java.util.regex.Pattern;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,8 +23,11 @@ public class CreateAccountPage extends BasePage {
 
     public void fillEmailField(String email) {
         Random random = new Random();
-        int randomNumbers = random.nextInt(1000);
-        String randomLogin = email + randomNumbers + "@gmail.com";
+        int randomNumbers = random.nextInt(1000000);
+        while(email.contains("{}")) {
+            email = email.replaceFirst(Pattern.quote("{}"), String.valueOf(randomNumbers));
+        }
+        String randomLogin = email + "@gmail.com";
         fieldEmail.sendKeys(randomLogin);
     }
 

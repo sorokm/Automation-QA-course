@@ -52,5 +52,4 @@ public class TestContext {
         myAccountPage = new MyAccountPage(webDriver);
         searchResultPage = new SearchResultPage(webDriver);
     }
-
 }

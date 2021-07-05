@@ -54,5 +54,4 @@ public class PersonalInformationPage extends BasePage {
         postcodeField.sendKeys(postcode);
         mobilePhoneField.sendKeys(mobilePhone);
     }
-
 }

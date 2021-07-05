@@ -10,7 +10,7 @@ public class SearchResultPage extends BasePage {
         super(driver);
     }
 
-    public static String userSearchRequest;
+    private static String userSearchRequest;
 
     public void setUserSearchRequest(String userSearchRequest) {
         SearchResultPage.userSearchRequest = userSearchRequest;
@@ -25,20 +25,19 @@ public class SearchResultPage extends BasePage {
     @FindBy(xpath = "//*[@class = 'alert alert-warning']")
     private WebElement warningMessage;
 
-    public boolean checkSearchResultContainsUserRequest() {
+    public boolean isSearchResultContainUserRequest() {
         String getResult = searchResult.getText();
         String resultWithoutQuotes = getResult.substring(1, getResult.length() - 1);
         return resultWithoutQuotes.equalsIgnoreCase(userSearchRequest);
     }
 
-    public boolean checkProductCardContainsUserRequest() {
+    public boolean isProductCardContainUserRequest() {
         String result = productName.getText();
         return result.contains(userSearchRequest);
     }
 
-    public boolean checkWarningMessageIsDisplayed(String message) {
+    public boolean isWarningMessageDisplayed(String message) {
         String actualMessage = warningMessage.getText();
         return message.equalsIgnoreCase(actualMessage);
     }
-
 }

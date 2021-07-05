@@ -74,20 +74,9 @@
         <version>3.0.0-M3</version>
         <configuration>
           <!-- <testFailureIgnore>true</testFailureIgnore>-->
-          <suiteXmlFiles>
-            <suiteXmlFile>${testng.suite}</suiteXmlFile>
-          </suiteXmlFiles>
         </configuration>
       </plugin>
     </plugins>
   </build>
 
-  <profiles>
-    <profile>
-      <id>cucumber tests</id>
-      <properties>
-        <testng.suite>${testng.configs.path}/testng.xml</testng.suite>
-      </properties>
-    </profile>
-  </profiles>
 </project>
